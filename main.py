@@ -7,9 +7,9 @@ import time
 import os
 import threading
 
-bot_token = os.environ.get("TOKEN", None) 
-api_hash = os.environ.get("HASH", None) 
-api_id = os.environ.get("ID", None)
+bot_token = os.environ.get("TOKEN", "5854415227:AAE6mGnT5Hc0s4dh0oa-o0BWNsuu4HK_P-U") 
+api_hash = os.environ.get("HASH", "7600412f97699a960c218fa1240a0822") 
+api_id = os.environ.get("ID", 24748535)
 bot = Client("mybot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 ss = os.environ.get("STRING", None)
