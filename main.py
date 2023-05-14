@@ -3,6 +3,14 @@ from pyrogram import Client, filters
 from pyrogram.errors import UserAlreadyParticipant, InviteHashExpired
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+from telethon.sessions import StringSession
+
+from telethon.sync import TelegramClient
+
+from decouple import config
+
+import logging, sys
+
 import time
 import os
 import threading
@@ -14,7 +22,7 @@ bot = Client("mybot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
 ss = os.environ.get("STRING", "AQBhPFxrmxMjobupLs54ZaLmwCv3IDGjiSOZS9CSoUenH-DfNUjZnXamwZ5vabZMAeJDaKM-gaCpf0_fWBiuAPBh1CWno2ICXBkpLmUd6BADn3kx3cjAOCbranR1BntU46ryLdK-qf08rELhYIT7LQnnj-U6HQ3qaOkfethlR7eweDNOZepijU0SEhxO-qfJiGT4uKwNdSxBKlNuSizYD29j3is7ceEl0K-SMvVo3h3OmG8UUzNh-QkSC6LsvYPdUc1dxOsvd4VTeqQiJZcarnPRegtutLAqTOAX5zIKlcvR9T1YspzpW3d2xHJN9KHIZ0hvZo0UY2XGrtDEZDJvnAxnAAAAAVbqnxYA")
 if ss is not None:
-	acc = Client("myacc" ,api_id=api_id, api_hash=api_hash, session_string=ss)
+	acc = Client("myacc" ,api_id=api_id, api_hash=api_hash, session_name=ss)
 	acc.start()
 else: acc = None
 
