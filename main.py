@@ -15,15 +15,27 @@ import time
 import os
 import threading
 
-bot_token = os.environ.get("TOKEN", "5854415227:AAHS8_8P2DC_hZokbgXijqyjZUaNjG-Qgdo") 
-api_hash = os.environ.get("HASH", "7600412f97699a960c218fa1240a0822") 
-api_id = os.environ.get("ID", 24748535)
-bot = Client("mybot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+# variables
 
-ss = os.environ.get("STRING", "AQBhPFxrmxMjobupLs54ZaLmwCv3IDGjiSOZS9CSoUenH-DfNUjZnXamwZ5vabZMAeJDaKM-gaCpf0_fWBiuAPBh1CWno2ICXBkpLmUd6BADn3kx3cjAOCbranR1BntU46ryLdK-qf08rELhYIT7LQnnj-U6HQ3qaOkfethlR7eweDNOZepijU0SEhxO-qfJiGT4uKwNdSxBKlNuSizYD29j3is7ceEl0K-SMvVo3h3OmG8UUzNh-QkSC6LsvYPdUc1dxOsvd4VTeqQiJZcarnPRegtutLAqTOAX5zIKlcvR9T1YspzpW3d2xHJN9KHIZ0hvZo0UY2XGrtDEZDJvnAxnAAAAAVbqnxYA")
-if ss is not None:
-	acc = Client("myacc" ,api_id=api_id, api_hash=api_hash, session_string=ss)
-	acc.start()
+API_ID = config("API_ID", default=24748535, cast=int)
+API_HASH = config("API_HASH", default="7600412f97699a960c218fa1240a0822")
+BOT_TOKEN = config("BOT_TOKEN", default="5854415227:AAHS8_8P2DC_hZokbgXijqyjZUaNjG-Qgdo")
+SESSION = config("SESSION", default="AQBhPFxrmxMjobupLs54ZaLmwCv3IDGjiSOZS9CSoUenH-DfNUjZnXamwZ5vabZMAeJDaKM-gaCpf0_fWBiuAPBh1CWno2ICXBkpLmUd6BADn3kx3cjAOCbranR1BntU46ryLdK-qf08rELhYIT7LQnnj-U6HQ3qaOkfethlR7eweDNOZepijU0SEhxO-qfJiGT4uKwNdSxBKlNuSizYD29j3is7ceEl0K-SMvVo3h3OmG8UUzNh-QkSC6LsvYPdUc1dxOsvd4VTeqQiJZcarnPRegtutLAqTOAX5zIKlcvR9T1YspzpW3d2xHJN9KHIZ0hvZo0UY2XGrtDEZDJvnAxnAAAAAVbqnxYA")
+
+bot = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN) 
+
+
+
+if SESSION is not None:
+	acc = Client(
+    session_name=SESSION, 
+    api_hash=API_HASH, 
+    api_id=API_ID)
+	try:
+        acc.start()
+        except BaseException:
+        print("Userbot Error ! Have you added SESSION while deploying??")
+    sys.exit(1)
 else: acc = None
 
 # download status
