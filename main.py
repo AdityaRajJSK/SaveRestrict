@@ -32,10 +32,10 @@ if SESSION is not None:
     api_hash=API_HASH, 
     api_id=API_ID)
 	try:
-acc.start()
+    userbot.start()
 except BaseException:
-print("Userbot Error ! Have you added SESSION while deploying??")
-sys.exit(1)
+    print("Userbot Error ! Have you added SESSION while deploying??")
+    sys.exit(1)
 else: acc = None
 
 # download status
