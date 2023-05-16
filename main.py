@@ -24,9 +24,8 @@ SESSION = config("SESSION", default="AQBhPFxrmxMjobupLs54ZaLmwCv3IDGjiSOZS9CSoUe
 
 bot = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN) 
 
-
-
 if SESSION is not None:
+	
 	acc = Client(
     session_name=SESSION, 
     api_hash=API_HASH, 
