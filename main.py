@@ -186,7 +186,7 @@ def handle_private(message,chatid,msgid):
 
 		os.remove(file)
 		if os.path.exists(f'{message.message_id}upstatus.txt'): os.remove(f'{message.message_id}upstatus.txt')
-		bot.delete_messages(message.chat.id,[smsg.id])
+		bot.delete_messages(message.chat.id,[smsg.message_id])
 
 
 # infinty polling
