@@ -1,16 +1,8 @@
 #pylint:disable=W0703
-
+import pyrogram
 from pyrogram import Client, filters
 from pyrogram.errors import UserAlreadyParticipant, InviteHashExpired
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
-from telethon.sessions import StringSession
-
-from telethon.sync import TelegramClient
-
-from decouple import config
-
-import logging, sys
 
 import time
 import os
