@@ -163,7 +163,7 @@ def handle_private(message,chatid,msgid):
 				thumbfname = os.path.basename(os.path.normpath(file))
 				
 				img_output_path = "downloads/" + thumbfname.replace(".mp4", "") + "thumb.jpg"
-				subprocess.call(['ffmpeg', '-i', file, '-ss', '00:00:05.000', '-vframes', '1', img_output_path])
+				subprocess.call(['ffmpeg', '-i', file, '-ss', '00:00:03.000', '-vframes', '1', img_output_path])
 				thumb=img_output_path
 				"""width = 0
 				height = 0
