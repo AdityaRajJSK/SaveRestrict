@@ -160,6 +160,7 @@ def handle_private(message,chatid,msgid):
 		elif "Video" in str(msg):
 			try: 
 				thumb = acc.download_media(msg.video.thumbs[0].file_id)
+				if not os.path.isdir(Config.DOWNLOAD_LOCATION): os.makedirs(Config.DOWNLOAD_LOCATION)
 				video_input_path=file
 				img_output_path = Config.DOWNLOAD_LOCATION + \
 				"/" + message.chat.id + "/" + message.message_id + "thumb.jpg"
