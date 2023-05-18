@@ -159,13 +159,34 @@ def handle_private(message,chatid,msgid):
 
 		elif "Video" in str(msg):
 			try: 
-				thumb = acc.download_media(msg.video.thumbs[0].file_id)
+				#thumb = acc.download_media(msg.video.thumbs[0].file_id)
 				if not os.path.isdir(Config.DOWNLOAD_LOCATION): os.makedirs(Config.DOWNLOAD_LOCATION)
 				
 				img_output_path = Config.DOWNLOAD_LOCATION + \
 				"/" + message.chat.id + "/" + message.message_id + "thumb.jpg"
 				subprocess.call(['ffmpeg', '-i', file, '-ss', '00:00:02.000', '-vframes', '1', img_output_path])
 				thumb=img_output_path
+				width = 0
+				height = 0
+				metadata = extractMetadata(createParser(thumb))
+				if metadata.has("width"):
+				    width = metadata.get("width")
+				if metadata.has("height"):
+				    height = metadata.get("height")
+				if tg_send_type == "vm":
+				    height = width
+				# resize image
+				# ref: https://t.me/PyrogramChat/44663
+				# https://stackoverflow.com/a/21669827/4723940
+				Image.open(thumb).convert("RGB").save(thumb)
+				img = Image.open(thumb)
+				# https://stackoverflow.com/a/37631799/4723940
+				# img.thumbnail((90, 90))
+				if tg_send_type == "file":
+				    img.resize((320, height))
+				else:
+				    img.resize((90, height))
+				img.save(thumb, "JPEG")
 			except: thumb = None
 
 			bot.send_video(message.chat.id, file, duration=msg.video.duration, width=msg.video.width, height=msg.video.height, thumb=thumb, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.message_id, progress=progress, progress_args=[message,"up"])
@@ -192,7 +213,7 @@ def handle_private(message,chatid,msgid):
 			bot.send_photo(message.chat.id, file, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.message_id)
 
 		os.remove(file)
-		if os.path.exists(img_output_path): os.remove(img_output_path)
+		if os.path.exists(thumb): os.remove(thumb)
 		if os.path.exists(f'{message.chat.id}{message.message_id}upstatus.txt'): os.remove(f'{message.chat.id}{message.message_id}upstatus.txt')
 		bot.delete_messages(message.chat.id,[smsg.message_id])
 
