@@ -160,8 +160,9 @@ def handle_private(message,chatid,msgid):
 		elif "Video" in str(msg):
 			try: 
 				#thumb = acc.download_media(msg.video.thumbs[0].file_id)
+				thumbfname = os.path.basename(os.path.normpath(file))
 				
-				img_output_path = "downloads/" + message.chat.id + message.message_id + "thumb.jpg"
+				img_output_path = "downloads/" + thumbfname.replace(".mp4", "") + "thumb.jpg"
 				subprocess.call(['ffmpeg', '-i', file, '-ss', '00:00:04.000', '-vframes', '1', img_output_path])
 				thumb=img_output_path
 				"""width = 0
