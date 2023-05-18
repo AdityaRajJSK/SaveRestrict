@@ -163,9 +163,9 @@ def handle_private(message,chatid,msgid):
 				video_input_path=file
 				img_output_path = Config.DOWNLOAD_LOCATION + \
 				"/" + message.chat.id + "/" + message.message_id + "thumb.jpg"
-                subprocess.call(['ffmpeg', '-i', video_input_path, '-ss', '00:00:02.000', '-vframes', '1', img_output_path])
-                thumb=img_output_path
-                """width = 0
+				subprocess.call(['ffmpeg', '-i', video_input_path, '-ss', '00:00:02.000', '-vframes', '1', img_output_path])
+				thumb=img_output_path
+				"""width = 0
                 height = 0
                 metadata = extractMetadata(createParser(thumb))
                 if metadata.has("width"):
@@ -186,8 +186,8 @@ def handle_private(message,chatid,msgid):
                     img.resize((320, height))
                 else:
                     img.resize((90, height))
-                img.save(thumb, "JPEG")
-			except: thumb = None"""
+                img.save(thumb, "JPEG")"""
+			except: thumb = None
 
 			bot.send_video(message.chat.id, file, duration=msg.video.duration, width=msg.video.width, height=msg.video.height, thumb=thumb, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.message_id, progress=progress, progress_args=[message,"up"])
 			if thumb != None: os.remove(thumb)
