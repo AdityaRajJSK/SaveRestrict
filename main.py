@@ -212,7 +212,6 @@ def handle_private(message,chatid,msgid):
 			bot.send_photo(message.chat.id, file, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.message_id)
 
 		os.remove(file)
-		if os.path.exists(thumb): os.remove(thumb)
 		if os.path.exists(f'{message.chat.id}{message.message_id}upstatus.txt'): os.remove(f'{message.chat.id}{message.message_id}upstatus.txt')
 		bot.delete_messages(message.chat.id,[smsg.message_id])
 
