@@ -139,6 +139,8 @@ def handle_private(message,chatid,msgid):
 		if "text" in str(msg):
 			bot.send_message(message.chat.id, msg.text, entities=msg.entities, reply_to_message_id=message.message_id)
 			return
+		
+		if not os.path.exists(f'prostatus/{message.chat.id}'): os.makedirs(f'prostatus/{message.chat.id}')
 
 		smsg = bot.send_message(message.chat.id, '__Downloading__', reply_to_message_id=message.message_id)
 		dosta = threading.Thread(target=lambda:downstatus(f'prostatus/{message.chat.id}/{message.message_id}downstatus.txt',smsg),daemon=True)
