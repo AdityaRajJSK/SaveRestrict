@@ -72,7 +72,7 @@ def upstatus(statusfile,message):
 
 # progress writter
 def progress(current, total, message, type):
-	with open(f'prostatus/{message.chat.id}{message.message_id}{type}status.txt',"w") as fileup:
+	with open(f'prostatus/{message.chat.id}/{message.message_id}{type}status.txt',"w") as fileup:
 		fileup.write(f"{current * 100 / total:.1f}%")
 
 
@@ -141,12 +141,12 @@ def handle_private(message,chatid,msgid):
 			return
 
 		smsg = bot.send_message(message.chat.id, '__Downloading__', reply_to_message_id=message.message_id)
-		dosta = threading.Thread(target=lambda:downstatus(f'prostatus/{message.chat.id}{message.message_id}downstatus.txt',smsg),daemon=True)
+		dosta = threading.Thread(target=lambda:downstatus(f'prostatus/{message.chat.id}/{message.message_id}downstatus.txt',smsg),daemon=True)
 		dosta.start()
 		file = acc.download_media(msg, progress=progress, progress_args=[message,"down"])
-		os.remove(f'prostatus/{message.chat.id}{message.message_id}downstatus.txt')
+		os.remove(f'prostatus/{message.chat.id}/{message.message_id}downstatus.txt')
 
-		upsta = threading.Thread(target=lambda:upstatus(f'prostatus/{message.chat.id}{message.message_id}upstatus.txt',smsg),daemon=True)
+		upsta = threading.Thread(target=lambda:upstatus(f'prostatus/{message.chat.id}/{message.message_id}upstatus.txt',smsg),daemon=True)
 		upsta.start()
 		
 		if "Document" in str(msg):
@@ -212,7 +212,7 @@ def handle_private(message,chatid,msgid):
 			bot.send_photo(message.chat.id, file, caption=msg.caption, caption_entities=msg.caption_entities, reply_to_message_id=message.message_id)
 
 		os.remove(file)
-		if os.path.exists(f'prostatus/{message.chat.id}{message.message_id}upstatus.txt'): os.remove(f'prostatus/{message.chat.id}{message.message_id}upstatus.txt')
+		if os.path.exists(f'prostatus/{message.chat.id}/{message.message_id}upstatus.txt'): os.remove(f'prostatus/{message.chat.id}/{message.message_id}upstatus.txt')
 		bot.delete_messages(message.chat.id,[smsg.message_id])
 
 
