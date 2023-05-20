@@ -15,10 +15,10 @@ import subprocess
 
 # variables
 
-API_ID = config("API_ID", default=24748535, cast=int)
-API_HASH = config("API_HASH", default="7600412f97699a960c218fa1240a0822")
+API_ID = config("API_ID", default=24971636, cast=int)
+API_HASH = config("API_HASH", default="e849f02b03ba5187f17343b920b1bee8")
 BOT_TOKEN = config("BOT_TOKEN", default="5854415227:AAHS8_8P2DC_hZokbgXijqyjZUaNjG-Qgdo")
-SESSION = config("SESSION", default="AQBhPFxrmxMjobupLs54ZaLmwCv3IDGjiSOZS9CSoUenH-DfNUjZnXamwZ5vabZMAeJDaKM-gaCpf0_fWBiuAPBh1CWno2ICXBkpLmUd6BADn3kx3cjAOCbranR1BntU46ryLdK-qf08rELhYIT7LQnnj-U6HQ3qaOkfethlR7eweDNOZepijU0SEhxO-qfJiGT4uKwNdSxBKlNuSizYD29j3is7ceEl0K-SMvVo3h3OmG8UUzNh-QkSC6LsvYPdUc1dxOsvd4VTeqQiJZcarnPRegtutLAqTOAX5zIKlcvR9T1YspzpW3d2xHJN9KHIZ0hvZo0UY2XGrtDEZDJvnAxnAAAAAVbqnxYA")
+SESSION = config("SESSION", default="BQAIn_WWKeSDIZV9NUd0ZA2tYoPbz_Cv6-2huZKlpxcGYNwnLK6Xbotk-J68GMj2ZPzXwV4LKDFproQzTh3qw1W2dVPo9NkKpX35qVc989OW5USL14iW6AIejblFeIF3SxaXOI6zTo9hcT-3-O25FHKde_wHuRKuawccO7_XuHHdbsvym_9L2FkIbbgLwUSG980_3UEbs557yOqibYcH6ieV-fgtQocHkRWqJCzRMlsQG9RbiVriERSryF6U5_pCbFwxwszPM82bjxUAG-o9Ql5tyhy1ROE2js3w6vBUvzFzALG9rnnALSCrgJ233qmY6R9dDtOv00NKAu1yvwOJNGXMAAAAAU1mdgsA")
 
 bot = Client("mybot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN) 
 
