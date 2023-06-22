@@ -26,7 +26,8 @@ if SESSION is not None:
     acc = Client('sessionbot',
     session_string=SESSION, 
     api_hash=API_HASH, 
-    api_id=API_ID)
+    api_id=API_ID,
+    max_concurrent_transmissions=10)
     
     try:
             acc.start()
